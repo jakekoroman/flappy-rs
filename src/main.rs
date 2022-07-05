@@ -152,7 +152,7 @@ fn main() -> Result<(), String> {
     let mut canvas = window.into_canvas().build().map_err(|e| e.to_string())?;
     let mut event_pump = sdl_context.event_pump()?;
     let mut fps_manager = FPSManager::new();
-    fps_manager.set_framerate(FPS).unwrap();
+    fps_manager.set_framerate(FPS)?;
 
     let player_loc = Vector2 { x: 35, y: 100 };
     let player_size = Vector2 { x: 30, y: 30 };

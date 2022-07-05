@@ -17,7 +17,7 @@ const PLAYER_VELOCITY: i32 = 50;
 const GRAVITY: i32 = 5;
 
 const PIPE_COLOR: Color = Color::RGB(11, 224, 68);
-const PIPE_X_POS: i32 = 300;
+const PIPE_X_POS: i32 = 325;
 const PIPE_GAP: i32 = 100;
 const PIPE_WIDTH: u32 = 75;
 const PIPE_SPEED: i32 = 5;

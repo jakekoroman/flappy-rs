@@ -81,26 +81,23 @@ fn draw<T: RenderTarget>(canvas: &mut Canvas<T>, player: &Player, pipes: &VecDeq
 fn check_loss(player: &Player, pipes: &VecDeque<Pipe>) -> bool {
     let pipe = pipes.get(0).unwrap();
 
-    if player.pos.x >= pipe.top_pos.x && player.pos.x <= pipe.top_pos.x + PIPE_WIDTH as i32 {
-        if !(player.pos.y > pipe.top_pos.height() as i32
-            && player.pos.y < (pipe.top_pos.height() + PIPE_GAP as u32) as i32)
-        {
-            println!("----");
-            dbg!(player.pos.x);
-            dbg!(player.pos.y);
-            dbg!(pipe.top_pos.x);
-            dbg!(pipe.top_pos.height());
-            dbg!(pipe.top_pos.height() + PIPE_GAP as u32);
-            println!("----");
-            return false;
-        }
+    if player.pos.x >= pipe.top_pos.x && player.pos.x <= pipe.top_pos.x + PIPE_WIDTH as i32 && !(player.pos.y > pipe.top_pos.height() as i32
+            && player.pos.y < (pipe.top_pos.height() + PIPE_GAP as u32) as i32) {
+        println!("----");
+        dbg!(player.pos.x);
+        dbg!(player.pos.y);
+        dbg!(pipe.top_pos.x);
+        dbg!(pipe.top_pos.height());
+        dbg!(pipe.top_pos.height() + PIPE_GAP as u32);
+        println!("----");
+        return false;
     }
 
     true
 }
 
 fn update(player: &mut Player, pipes: &mut VecDeque<Pipe>, frame_count: i32) {
-    if !(player.pos.y + player.pos.h >= WINDOW_HEIGHT) {
+    if player.pos.y + player.pos.h < WINDOW_HEIGHT {
         player.pos.y += GRAVITY;
     }
 
